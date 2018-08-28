@@ -1,0 +1,17 @@
+{
+  "name": "mr-crypt",
+  "version": "1.0.0",
+  "description": "encrypt and decrypt with Miller-Rabin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Miller-Rabin",
+    "encrypt",
+    "decrypt",
+    "prime"
+  ],
+  "author": "fanyuan",
+  "license": "ISC"
+}
