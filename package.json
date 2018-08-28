@@ -1,6 +1,6 @@
 {
   "name": "mr-crypt",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "description": "encrypt and decrypt with Miller-Rabin",
   "main": "index.js",
   "scripts": {
@@ -13,5 +13,9 @@
     "prime"
   ],
   "author": "fanyuan",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "arraylist": "^0.1.0",
+    "big-integer": "^1.6.34"
+  }
 }
