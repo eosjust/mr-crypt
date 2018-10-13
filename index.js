@@ -30,6 +30,7 @@ var mrcrypt={
     },
     keygen:function () {
         var key=new Object();
+        var starttime=new Date();
         var g = bigInt("2");
         var p = bigInt("0");
         do {
@@ -37,6 +38,8 @@ var mrcrypt={
             if ((q.mod(12).notEquals(bigInt("5"))) || (!q.isPrime())) continue;
             p = (q.shiftLeft(1)).add(bigInt("1"));
         } while (p .leq(UINT64_MAX.shiftRight(1)) || !p.isPrime());
+        var lasttime=new Date()-starttime;
+        console.log(lasttime);
         var d = bigInt.randBetween(bigInt("1"),p.minus(bigInt("1")));
         var e2 = this.modExp(g,d,p);
         key.p=p;
@@ -44,6 +47,27 @@ var mrcrypt={
         key.e2=e2;
         key.d=d;
         return key;
+    },
+    testcostomkey:function (p,g,e2) {
+        var key=this.keygen();
+        var keystr=bigInt.randBetween(100000,999999).toString(10)+";";
+        keystr+=key.p.toString(10);
+        keystr+=","+key.g.toString(10);
+        keystr+=","+key.e2.toString(10);
+        keystr+=","+key.d.toString(10);
+        keystr+=";"+bigInt.randBetween(100000,999999).toString(10);
+        return keystr;
+    },
+    getcostomkey:function (p,g,e2) {
+        var key=this.keygen();
+        var keystr=bigInt.randBetween(100000,999999).toString(10)+";";
+        keystr+=key.p.toString(10);
+        keystr+=","+key.g.toString(10);
+        keystr+=","+key.e2.toString(10);
+        keystr+=","+key.d.toString(10);
+        keystr+=";"+bigInt.randBetween(100000,999999).toString(10);
+        var result = this.encrypt(p,g,e2,keystr);
+        return result;
     },
     buf2hex: function (buffer) { // buffer is an ArrayBuffer
         return Array.prototype.map.call(new Uint8Array(buffer), x => ('00' + x.toString(16)).slice(-2)).join('');

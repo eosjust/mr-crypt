@@ -1,6 +1,6 @@
 {
   "name": "mr-crypt",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "encrypt and decrypt with Miller-Rabin",
   "main": "index.js",
   "scripts": {
